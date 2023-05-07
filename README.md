@@ -17,3 +17,36 @@
   - Host on HTTPS as well
   - Tree Shacking (Remove unused code)
   - Different div and prod bundles
+
+
+* Header
+  * Logo
+  * Nav Item
+* Body
+    * Search
+    * Restaurant Container
+        * Restaurant Cart
+            * Image
+            * Name of Restaurant
+            * Star rating
+            * Cuisine 
+            * Delivery time
+* Footer
+    * Copyright
+    * Links
+    * Address
+    * Contact
+
+
+# Exports 
+  - Default:
+      - export default file_name
+      - import file_name from path
+  - Named:
+      - export file_name;
+      - import {exact_exportName} from path
+
+# React Hooks
+  - (Normal JS utility function)
+  - useState()
+  - useEffect()

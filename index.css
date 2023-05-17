@@ -2,6 +2,7 @@
     display: flex;
     justify-content: space-between;
     border: 1px solid black;
+    background-color: rgb(169, 222, 204);
 }
 
 .logo {
@@ -48,4 +49,17 @@
 .filter-btn {
     margin: 10px;
     cursor: pointer;
+}
+
+.body {
+    margin-left: 10rem;
+}
+
+.srch-filt {
+    display: flex;
+    flex-direction: row;
+}
+
+.search-btn {
+    margin: 10px;
 }

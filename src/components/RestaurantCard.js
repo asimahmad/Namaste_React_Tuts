@@ -5,9 +5,9 @@ styleCard = {
 
 const RestaurantCard = ({resData}) =>{
     //const {name,thumb,cuisine,rating,delivery_time} = resData;
-    const {name, costForTwoString,cuisines, deliveryTime,avgRating,cloudinaryImageId} = resData?.data; // optional chaining
-
+    const {id,name, costForTwoString,cuisines, deliveryTime,avgRating,cloudinaryImageId} = resData?.data; // optional chaining
     return (
+       
         <div className="res-card" style={styleCard}>
             <img className="res-logo" src={CDN_URL+cloudinaryImageId} alt='res-logo'/>
             <h3>{name}</h3>

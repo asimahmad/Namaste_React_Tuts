@@ -71,3 +71,9 @@
     height: 220px;
     background-image: linear-gradient(to right, rgb(234, 227, 227), rgb(181, 167, 167));
 }
+
+.food-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}

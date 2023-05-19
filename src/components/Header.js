@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import {LOGO_URL} from '../utils/constants'
+import {Link} from 'react-router-dom'
 
 function loggedInUser(){
     // API call to check authentication 
@@ -19,8 +20,8 @@ export default Header = () =>{
             <h1>Food Villa</h1>
             <div className="nav-items">
                 <ul>
-                    <li>Home</li>
-                    <li>About Us</li>
+                    <li><Link to='/'>Home</Link></li>
+                    <li><Link to='/about'>About Us</Link></li>
                     <li>Contact Us</li>
                     <li>Cart</li>
                 </ul>

@@ -63,3 +63,11 @@
 .search-btn {
     margin: 10px;
 }
+
+.shimmer-card {
+    width: 220px;
+    padding: 5px;
+    margin: 5px;
+    height: 220px;
+    background-image: linear-gradient(to right, rgb(234, 227, 227), rgb(181, 167, 167));
+}

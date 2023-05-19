@@ -2,8 +2,12 @@ import React from 'react'
 
 export default function Shimmer() {
   return (
-    <div>
-      <h1>Loading ......</h1>
+    <div className="res-container body">
+        {
+            Array(10).fill("").map((e,index) =>(
+                <div key={index} className='shimmer-card'></div>
+            ))
+        }
     </div>
   )
 }

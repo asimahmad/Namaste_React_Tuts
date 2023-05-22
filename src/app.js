@@ -8,6 +8,7 @@ import About from './components/About'
 import Error from './components/Error';
 import Contact from './components/Contact';
 import RestaurantMenu from './components/RestaurantMenu';
+import Profile from './components/Profile';
 
 // const parent = React.createElement('div',{id:'parent'},
 // [
@@ -110,8 +111,12 @@ const appRouter = createBrowserRouter([
                 element:<Body/>
             },
             {
-                path:'/about',
-                element: <About />
+                path:'/about', // here if /about then it will work cause localhost:1234/about is same if about is given as well.
+                element: <About />,
+                children: [{
+                    path: 'profile', // dont give / before else router will take it as localhost:123/about
+                    element: <Profile />
+                }]
             },
             {
                 path:'/contact',

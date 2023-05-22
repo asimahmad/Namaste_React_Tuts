@@ -47,7 +47,7 @@ export default function RestaurantMenu() {
                             </p>
                     )
                     )}
-                    </>
+                    </> 
         ))
     }
     </div>

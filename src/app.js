@@ -1,14 +1,24 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import Header from './components/Header'
 import Body from './components/Body'
 import Footer from './components/Footer';
 import {createBrowserRouter, RouterProvider, Outlet} from 'react-router-dom'
-import About from './components/About' 
+// import About from './components/About' 
 import Error from './components/Error';
 import Contact from './components/Contact';
 import RestaurantMenu from './components/RestaurantMenu';
 import Profile from './components/Profile';
+import Shimmer from './components/Shimmer';
+// import InstaMart from './components/InstaMart'; removed because it's loaded with lazy loading or on demand loading
+
+// chunking or code splitting or dynamic bundling or lazy loading are same.
+const InstaMart = lazy(()=> import('./components/InstaMart'))
+// upon on demand loading  -> upon render react suspend the loading
+
+const About = lazy(()=>import('./components/About')) // chunking/lazy loading/on demand loading/ dynamic bundling/ dynamic import for About component
+
+// never ever try to lazy load the component inside another component
 
 // const parent = React.createElement('div',{id:'parent'},
 // [
@@ -91,6 +101,8 @@ import Profile from './components/Profile';
 // //root.render(<Title/>); // above one will not render as last one will render only.
 
 const AppLayout = () =>{
+
+    //const a = lazy(()=> import('path')), this is wrong place to do dynamic loading
     return (
         <div className="app">
             <Header />
@@ -112,7 +124,7 @@ const appRouter = createBrowserRouter([
             },
             {
                 path:'/about', // here if /about then it will work cause localhost:1234/about is same if about is given as well.
-                element: <About />,
+                element: <Suspense fallback={<h1>loading</h1>}><About /></Suspense>,
                 children: [{
                     path: 'profile', // dont give / before else router will take it as localhost:123/about
                     element: <Profile />
@@ -125,6 +137,10 @@ const appRouter = createBrowserRouter([
             {
                 path: '/restaurant/:resId',
                 element: <RestaurantMenu />
+            },
+            {
+                path: '/instamart',
+                element: <Suspense fallback={<Shimmer/>}><InstaMart /></Suspense> // suspense is used for lazy laoding and it a promise, fallback is used to display shimmer until the page is available
             }
         ]
     },

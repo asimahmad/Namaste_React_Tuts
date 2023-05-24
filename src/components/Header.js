@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import {LOGO_URL} from '../utils/constants'
 import {Link} from 'react-router-dom'
+import useOnline from '../utils/useOnline'
 
 function loggedInUser(){
     // API call to check authentication 
@@ -8,6 +9,7 @@ function loggedInUser(){
 }
 export default Header = () =>{
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const isOnline = useOnline();
 
     console.log('Render');
     return (
@@ -24,6 +26,8 @@ export default Header = () =>{
                     <li><Link to='/about'>About Us</Link></li>
                     <li><Link to='/contact'>Contact Us</Link></li>
                     <li>Cart</li>
+                    <li><Link to='/instamart'>InstaMart</Link></li>
+                    <li>{isOnline?'✅':'🔴'}</li>
                 </ul>
             </div>
             {

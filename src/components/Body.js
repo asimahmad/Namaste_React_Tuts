@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import RestaurantCard from './RestaurantCard'
 import Shimmer from './Shimmer';
 import {Link} from 'react-router-dom'
+import useOnline from '../utils/useOnline'
 
 export default Body = () =>{
     let [data,setData] = useState([]);
@@ -32,7 +33,10 @@ export default Body = () =>{
     // early return (not render component)
     //if(!data.length) return null;
 
+    const isOnline = useOnline(); // hooks are removed during unmounting phase
 
+    if(!isOnline) return <h1>👹 Offline!! Please check your internet connection</h1>
+    
     return data?.length===0? <Shimmer />:fdata.length===0?<><h2>No Restraunt matches your filter</h2><button onClick={()=> {setFData(data), setSearchText('')}}>Clear search</button></>:(
         <div className="body">
             <div className='srch-filt'>

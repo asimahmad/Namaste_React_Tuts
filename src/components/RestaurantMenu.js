@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import {useParams} from 'react-router-dom'
 import { CDN_URL } from '../utils/constants';
+import useRestaurant from '../utils/useRestaurant';
 
 export default function RestaurantMenu() {
     const {resId} = useParams();
     const [rest, setRest] = useState({});
     const [foodItems, setFoodItems] = useState([])
+
+    
+    //const {rest,foodItems} = useRestaurant(resId) custom hook
 
     if(foodItems.length>0){
         foodItems.pop()
@@ -25,7 +29,7 @@ export default function RestaurantMenu() {
     }
   return foodItems.length===0?<div>not rendered at details</div>:(
       <div className='food-container'>
-    <div className='res-card' style={{border:'2px solid', color:rest.isOpen?'':'none', pointerEvents:rest.isOpen?'cursor':'none'}}>
+    <div className='res-card'>
       <h2>{rest.name}</h2>
       <img className="res-logo" src={CDN_URL + rest.cloudinaryImageId} alt='restaurant image'/>
       <h3>{rest.areaName}</h3>

@@ -1,4 +1,17 @@
-.header {
+/* 
+    - Tailwind
+    - CSS on the go ( in the same file)
+    - Reusability 
+    - Less bundle size ( minimal css it offers to us)
+    - Flexible UI ( customization )
+
+*/
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* .header {
     display: flex;
     justify-content: space-between;
     border: 1px solid black;
@@ -76,4 +89,4 @@
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
-}
+} */

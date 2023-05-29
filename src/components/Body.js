@@ -38,22 +38,24 @@ export default Body = () =>{
     if(!isOnline) return <h1>👹 Offline!! Please check your internet connection</h1>
     
     return data?.length===0? <Shimmer />:fdata.length===0?<><h2>No Restraunt matches your filter</h2><button onClick={()=> {setFData(data), setSearchText('')}}>Clear search</button></>:(
-        <div className="body">
-            <div className='srch-filt'>
+        <div className='body'>
+            <div className='srch-filt p-5 bg-pink-50 my-5'>
+                <div className='flex justify-start'>
                 <div className="filter">
-                    <button className="filter-btn" 
+                    <button className="p-2 m-4 bg-pink-300 rounded-sm hover:bg-pink-500 hover:first-letter:font-extrabold" 
                     onClick={()=>{
                         setFData(data.filter(i => i.data.avgRating>4))
                         console.log(data)}}>Top Rated Restaurant</button>
                 </div>
-                <div className='search-btn'>
-                    <input type="text" className="search-input" placeholder='Search' value={searchText} onChange={(e)=>{
+                <div className='p-2 m-4 text-red-300'>
+                    <input type="text" className="focus:bg-pink-50" placeholder='Search Restaurant' value={searchText} onChange={(e)=>{
                         setSearchText(e.target.value)
                         }
                     } />
                 </div> 
+                </div>
             </div>
-            <div className="res-container">
+            <div className="flex flex-wrap">
                 {
                     fdata.map((restaurant, index) => (
                         <Link to={`/restaurant/${restaurant.data.id}`} key={restaurant.data.id}>

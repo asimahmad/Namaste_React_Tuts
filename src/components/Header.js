@@ -13,21 +13,21 @@ export default Header = () =>{
 
     console.log('Render');
     return (
-        <div className="header">
+        <div className="flex justify-between bg-pink-300 shadow-xl sm:bg-blue-50 md:bg-yellow-100">
             <div className="logo-container">
                 <a href="/">
-                    <img className="logo" src={LOGO_URL} />
+                    <img className="h-28 p-2" src={LOGO_URL} />
                 </a>
             </div>
             <h1>Food Villa</h1>
             <div className="nav-items">
-                <ul>
-                    <li><Link to='/'>Home</Link></li>
-                    <li><Link to='/about'>About Us</Link></li>
-                    <li><Link to='/contact'>Contact Us</Link></li>
-                    <li>Cart</li>
-                    <li><Link to='/instamart'>InstaMart</Link></li>
-                    <li>{isOnline?'✅':'🔴'}</li>
+                <ul className='flex py-10'>
+                    <li className='px-2'><Link to='/'>Home</Link></li>
+                    <li className="px-2"><Link to='/about'>About Us</Link></li>
+                    <li className="px-2"><Link to='/contact'>Contact Us</Link></li>
+                    <li className="px-2">Cart</li>
+                    <li className="px-2"><Link to='/instamart'>InstaMart</Link></li>
+                    <li className="px-2">{isOnline?'✅':'🔴'}</li>
                 </ul>
             </div>
             {

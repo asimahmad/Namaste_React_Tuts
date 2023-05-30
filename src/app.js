@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import Header from './components/Header'
 import Body from './components/Body'
@@ -101,6 +101,10 @@ const About = lazy(()=>import('./components/About')) // chunking/lazy loading/on
 // //root.render(<Title/>); // above one will not render as last one will render only.
 
 const AppLayout = () =>{
+    // const [user, setUser] = useState({
+    //     name: 'Asim',
+    //     email: 'asimlpu123@gmail.com'
+    // })
 
     //const a = lazy(()=> import('path')), this is wrong place to do dynamic loading
     return (

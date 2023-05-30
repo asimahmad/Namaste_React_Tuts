@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import {LOGO_URL} from '../utils/constants'
 import {Link} from 'react-router-dom'
 import useOnline from '../utils/useOnline'
+import UserContext from '../utils/userContext'
 
 function loggedInUser(){
     // API call to check authentication 
@@ -10,6 +11,7 @@ function loggedInUser(){
 export default Header = () =>{
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const isOnline = useOnline();
+    const {user} = useContext(UserContext);
 
     console.log('Render');
     return (
@@ -28,7 +30,9 @@ export default Header = () =>{
                     <li className="px-2">Cart</li>
                     <li className="px-2"><Link to='/instamart'>InstaMart</Link></li>
                     <li className="px-2">{isOnline?'✅':'🔴'}</li>
+                    <li className='px-2 font-bold text-purple-600'>{user.name}</li>
                 </ul>
+                
             </div>
             {
                 isLoggedIn?<button onClick={()=> setIsLoggedIn(false)}>Logout</button>:<button onClick={()=> setIsLoggedIn(true)}>Login</button>

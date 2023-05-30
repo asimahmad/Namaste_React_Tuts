@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useState } from 'react';
+import React, { lazy, Suspense, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import Header from './components/Header'
 import Body from './components/Body'
@@ -10,6 +10,7 @@ import Contact from './components/Contact';
 import RestaurantMenu from './components/RestaurantMenu';
 import Profile from './components/Profile';
 import Shimmer from './components/Shimmer';
+import UserContext from './utils/userContext';
 // import InstaMart from './components/InstaMart'; removed because it's loaded with lazy loading or on demand loading
 
 // chunking or code splitting or dynamic bundling or lazy loading are same.
@@ -101,18 +102,30 @@ const About = lazy(()=>import('./components/About')) // chunking/lazy loading/on
 // //root.render(<Title/>); // above one will not render as last one will render only.
 
 const AppLayout = () =>{
-    // const [user, setUser] = useState({
-    //     name: 'Asim',
-    //     email: 'asimlpu123@gmail.com'
-    // })
+    const [user, setUser] = useState({
+        user:{
+            name: 'Asim',
+            email: 'asimlpu123@gmail.com'
+        }
+    })
+    // useEffect(()=>{
+    //     setUser({
+    //         user:{
+    //             name:'Asim Ahmad',
+    //             email: 'xyz@gmail.com'
+    //         }
+    //     })
+    // },[])
 
     //const a = lazy(()=> import('path')), this is wrong place to do dynamic loading
     return (
-        <div className="app">
+        <>
+        <UserContext.Provider value={{user,setUser}}>
             <Header />
             <Outlet/>
-            <Footer />
-        </div>
+        </UserContext.Provider>
+        <Footer />
+        </>
     )
 }
 

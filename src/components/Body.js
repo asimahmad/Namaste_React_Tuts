@@ -1,14 +1,17 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 // import res from '../utils/mockData'
 import RestaurantCard from './RestaurantCard'
 import Shimmer from './Shimmer';
 import {Link} from 'react-router-dom'
 import useOnline from '../utils/useOnline'
+import UserContext from '../utils/userContext';
 
 export default Body = () =>{
     let [data,setData] = useState([]);
     const [fdata, setFData] = useState([]);
     let [searchText, setSearchText] = useState('')
+    const {user, setUser} = useContext(UserContext); // here user is undefined at very first render. why?- need to do R&D
+    console.log(user.name)
 
     useEffect(()=>{
         getResList();
@@ -53,6 +56,7 @@ export default Body = () =>{
                         }
                     } />
                 </div> 
+                <input className="p-2 m-4" value={user.name} onChange={(e)=>setUser({...user,name:e.target.value})}/>
                 </div>
             </div>
             <div className="flex flex-wrap">

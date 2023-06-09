@@ -11,6 +11,10 @@ import RestaurantMenu from './components/RestaurantMenu';
 import Profile from './components/Profile';
 import Shimmer from './components/Shimmer';
 import UserContext from './utils/userContext';
+import {Provider} from 'react-redux'
+import store from './utils/store'
+import Cart from './components/Cart'
+
 // import InstaMart from './components/InstaMart'; removed because it's loaded with lazy loading or on demand loading
 
 // chunking or code splitting or dynamic bundling or lazy loading are same.
@@ -119,13 +123,13 @@ const AppLayout = () =>{
 
     //const a = lazy(()=> import('path')), this is wrong place to do dynamic loading
     return (
-        <>
+        <Provider store={store}>
         <UserContext.Provider value={{user,setUser}}>
             <Header />
             <Outlet/>
         </UserContext.Provider>
         <Footer />
-        </>
+        </Provider>
     )
 }
 
@@ -158,6 +162,10 @@ const appRouter = createBrowserRouter([
             {
                 path: '/instamart',
                 element: <Suspense fallback={<Shimmer/>}><InstaMart /></Suspense> // suspense is used for lazy laoding and it a promise, fallback is used to display shimmer until the page is available
+            },
+            {
+                path: '/cart',
+                element: <Cart/>
             }
         ]
     },
